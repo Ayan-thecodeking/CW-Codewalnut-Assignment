@@ -15,9 +15,9 @@ export const Card = ({ pokemonData }) => {
       <h1 className="text-xl font-bold text-center capitalize mb-2">
         {pokemonData.name}
       </h1>
-      <p className=" text-center text-sm italic mb-4">
+      <p className=" text-center text-sm  mb-4">
         {pokemonData.types.map((type) => type.type.name).join(", ")} type
-        Pokémon
+        Pokemon
       </p>
       <button
         className="view-details-btn w-full bg-white text-blue-600 font-bold py-2 rounded-lg hover:bg-gray-200"

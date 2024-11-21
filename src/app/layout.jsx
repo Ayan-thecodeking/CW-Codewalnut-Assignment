@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "CodeWalnut",
-  description: "Tech Test",
+  title: "Pokemon App",
+  description: "Test",
 };
 
 export default function RootLayout({ children }) {
