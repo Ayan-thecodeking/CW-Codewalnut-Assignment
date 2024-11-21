@@ -60,7 +60,7 @@ export default function PokemonDetails({ params }) {
             <img
               src={pokemonDetails.sprites.other.dream_world.front_default}
               alt={pokemonDetails.name}
-              className="w-36 h-36 sm:w-48 sm:h-48 object-cover rounded-full border-4 border-white shadow-lg"
+              className="w-36 h-36 sm:w-48 sm:h-48 object-contain rounded-full border-4 border-white shadow-lg"
             />
           </figure>
           <h1 className="text-3xl sm:text-4xl font-bold capitalize mt-4">
