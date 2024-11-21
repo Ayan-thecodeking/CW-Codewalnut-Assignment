@@ -20,8 +20,8 @@ export const usePokemonInfo = () => {
         return data;
       });
 
-      const detailedResponses = await Promise.all(pokemonList);
-      setPokemon(detailedResponses);
+      const allPokemonData = await Promise.all(pokemonList);
+      setPokemon(allPokemonData);
       setLoading(false);
     } catch (error) {
       setLoading(false);
