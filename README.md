@@ -2,7 +2,7 @@
 
 ---
 
-## Setup Instructions
+## Setup Instructions :
 
 ### 1. Clone the Repository
 
