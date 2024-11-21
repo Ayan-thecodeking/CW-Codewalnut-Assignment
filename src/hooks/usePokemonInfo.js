@@ -1,18 +1,38 @@
-import {useEffect, useState} from "react"
+'use client';
 
+import { useState, useEffect } from "react";
 
-function usePokemonInfo(pokemon){
-    const [data, setData] = useState({})
-    useEffect(() => {
-        fetch(
-            ``
-        )
-        .then((res) => res.json())
-        .then((res) => setData(res[currency]))
-        console.log(data);
-    }, [currency])
-    console.log(data);
-    return data
-}
+export const usePokemonInfo = () => {
+  const [pokemon, setPokemon] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-export default usePokemonInfo;
+  const API = "https://pokeapi.co/api/v2/pokemon";
+
+  const getPokemonList = async () => {
+    try {
+      const res = await fetch(API);
+      const data = await res.json();
+
+      const pokemonList = data.results.map(async (pokemonData) => {
+        const res = await fetch(pokemonData.url);
+        const data = await res.json();
+        return data;
+      });
+
+      const detailedResponses = await Promise.all(pokemonList);
+      setPokemon(detailedResponses);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  };
+
+  useEffect(() => {
+    getPokemonList();
+  }, []);
+
+  return { pokemon, loading, error };
+};
+

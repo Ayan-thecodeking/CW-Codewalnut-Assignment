@@ -15,14 +15,6 @@ const Header = () => {
           />
         </div>
 
-        <div className="w-full max-w-sm relative hidden md:block">
-          <input
-            type="text"
-            placeholder="Search your favourite Pokemon"
-            className="w-full rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring focus:ring-blue-300"
-          />
-        </div>
-
         {/* pokeball for mobile view  */}
         <div className=" max-w-sm md:hidden sm:justify-end">
         <Image
@@ -33,14 +25,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* mobile view search ----- */}
-      <div className="block md:hidden bg-blue-700 p-2">
-        <input
-          type="text"
-          placeholder="Search your favourite pokemon"
-          className="w-full rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring focus:ring-blue-300"
-        />
-      </div>
     </header>
   );
 };
