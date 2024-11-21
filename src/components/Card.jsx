@@ -1,5 +1,7 @@
+import { useRouter } from "next/navigation";
 
 export const Card = ({ pokemonData }) => {
+  const router = useRouter();
 
   return (
     <li className=" p-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg shadow-lg hover:scale-105 transition-transform text-white">
@@ -15,10 +17,11 @@ export const Card = ({ pokemonData }) => {
       </h1>
       <p className=" text-center text-sm italic mb-4">
         {pokemonData.types.map((type) => type.type.name).join(", ")} type
-        Pokemon
+        Pokémon
       </p>
       <button
         className="view-details-btn w-full bg-white text-blue-600 font-bold py-2 rounded-lg hover:bg-gray-200"
+        onClick={() => router.push(`/pokemonInfo/${pokemonData.id}`)}
       >
         View Details
       </button>
