@@ -1,21 +1,50 @@
-/* eslint-disable react/jsx-filename-extension */
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+import { usePokemonInfo } from '@/hooks/usePokemonInfo';
+import { Search } from '@/components/Search';
+import { Card } from '@/components/Card';
+
+export default function PokemonPage() {
+  const { pokemon, loading, error } = usePokemonInfo();
+  const [search, setSearch] = useState('');
+
+  // Search functionality
+  const pokemonFilteredList = search
+    ? pokemon.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+    : pokemon;
+
+  if (loading) {
+    return <div className="text-center mt-10 text-xl">Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="text-center mt-10 text-red-500">
+        {error.message || 'Something went wrong'}
+      </div>
+    );
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-2 row-start-2 items-center justify-center">
-        <Image
-          src="/images/codewalnut-logo.svg"
-          alt="CodeWalnut logo"
-          width={180}
-          height={38}
-          priority
-        />
+    <main className="container mx-auto px-4 py-8">
+      {/* Search Component */}
+      <div className="mb-6">
+        <Search search={search} setSearch={setSearch} />
+      </div>
 
-        <h1 className="text-4xl font-bold mt-6">Tech Test</h1>
-        <h2 className="text-lg">Good luck!</h2>
-      </main>
-    </div>
+      {/* Rendering Pokemon List */}
+      <ul className="flex flex-wrap gap-10 justify-center">
+        {pokemonFilteredList.length > 0 ? (
+          pokemonFilteredList.map((pokemonData) => (
+            <Card key={pokemonData.id} pokemonData={pokemonData} />
+          ))
+        ) : (
+          <div className="text-center text-gray-500 w-full">
+            No Pokemon with this name exist.
+          </div>
+        )}
+      </ul>
+    </main>
   );
 }
