@@ -59,3 +59,12 @@ I started learning Next.js just last week, and I found this project to be the pe
 - **Folder Structure**: I followed a simple and intuitive folder structure that makes the codebase easy to read and maintain. This was done with scalability in mind, allowing for straightforward future updates and additions.
 
 This project has helped me get hands-on with Next.js and taught me how to organize and structure an app effectively. I’m excited to continue building on this foundation and improving my skills!
+
+
+## Challanges 
+
+As I was new to Next.js and hadn’t worked with React in a while, I faced some initial challenges. One issue was retrieving query parameters, which took me a bit of time to figure out. After referring to the documentation, I identified the problem and understood how to properly handle it. Additionally, using the App Router and setting up dynamic routing was a bit tricky since I was creating a new page with a different name. However, through this, I learned a lot of new concepts that I plan to incorporate in future projects.
+
+Apart from these, I didn’t encounter any major hurdles while implementing the core functionality. The only challenge I faced was fetching data from the Poke API, where the initial API call returned an array of objects. I had to make additional requests to get detailed data for each object, which was a bit time-consuming.
+
+
