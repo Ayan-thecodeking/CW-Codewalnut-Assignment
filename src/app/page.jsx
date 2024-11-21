@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { usePokemonInfo } from '@/hooks/usePokemonInfo';
-import { Search } from '@/components/HomeComponents/Search';
-import { Card } from '@/components/HomeComponents/Card';
+import { Search } from '@/components/pokemon/Search';
+import { Card } from '@/components/pokemon/Card';
 
 export default function PokemonPage() {
   const { pokemon, loading, error } = usePokemonInfo();
