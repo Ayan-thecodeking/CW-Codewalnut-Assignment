@@ -4,23 +4,40 @@ import { useState } from "react";
 import { usePokemonInfo } from "@/hooks/usePokemonInfo";
 import { Search } from "@/components/pokemon/Search";
 import { Card } from "@/components/pokemon/Card";
+import Filter from "@/components/pokemon/Filter";
 
 export default function PokemonPage() {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedType, setSelectedType] = useState("");
   const itemsPerPage = 20;
 
   const offset = (currentPage - 1) * itemsPerPage;
 
   const { pokemon, loading, error } = usePokemonInfo(itemsPerPage, offset);
 
-  // Search functionality
-  const pokemonFilteredList = search
-    ? pokemon.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
-    : pokemon;
+  console.log(pokemon);
+  const pokemonFilteredList = pokemon.filter((pokemon) => {
+    const isNameMatch = pokemon.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const isTypeMatch =
+      !selectedType ||
+      pokemon.types.some((type) => type.type.name === selectedType);
+
+    return isNameMatch && isTypeMatch;
+  });
+
+  const pokemonTypeList = [
+    ...new Set(
+      pokemon.flatMap((pokemon) => pokemon.types.map((type) => type.type.name)),
+    ),
+  ];
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    setSelectedType("");
   };
 
   if (loading) {
@@ -37,9 +54,20 @@ export default function PokemonPage() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      {/* Search Component */}
-      <div className="mb-6">
-        <Search search={search} setSearch={setSearch} />
+      <div className="flex flex-wrap justify-between mb-6 mx-12">
+        {/* Search Component */}
+        <div className="w-full sm:w-1/2 mb-4 sm:mb-0 sm:mr-4">
+          <Search search={search} setSearch={setSearch} />
+        </div>
+
+        {/* Filter Component */}
+        <div className="w-full sm:w-auto">
+          <Filter
+            selectedType={selectedType}
+            setSelectedType={setSelectedType}
+            pokemonTypeList={pokemonTypeList}
+          />
+        </div>
       </div>
 
       {/* Rendering Pokemon List */}
