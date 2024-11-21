@@ -9,7 +9,7 @@ export const Card = ({ pokemonData }) => {
         <img
           src={pokemonData.sprites.other.dream_world.front_default}
           alt={pokemonData.name}
-          className=" w-36 h-36 object-cover rounded-full border-4 border-white shadow-lg"
+          className=" w-36 h-36 object-contain rounded-full border-4 border-white shadow-lg"
         />
       </figure>
       <h1 className="text-xl font-bold text-center capitalize mb-2">
