@@ -43,3 +43,19 @@ pnpm dev
 ```
 
 This will launch the app in development mode at [http://localhost:3000](http://localhost:3000).
+
+## Pokemon App - Approach
+
+I started learning Next.js just last week, and I found this project to be the perfect opportunity to put my newly acquired skills to the test. In this app, I’ve kept things simple and focused on practical implementation.
+
+### Key Decisions:
+
+- **API Data Fetching**: Instead of using Context API to manage the state for the Pokemon data, I decided to use a custom hook. This approach keeps the logic isolated and makes the code more modular and easier to manage.
+  
+- **API Calls**: For this project, I thought the native `fetch` method would be a good choice for making API calls, as it keeps the project lightweight and doesn't require additional dependencies, and I found no significant advantage to using Axios in this case.
+
+- **Routing**: I utilized the App Router for client-side routing. This allowed me to create dynamic routes to show individual Pokemon details, making the app more interactive.
+
+- **Folder Structure**: I followed a simple and intuitive folder structure that makes the codebase easy to read and maintain. This was done with scalability in mind, allowing for straightforward future updates and additions.
+
+This project has helped me get hands-on with Next.js and taught me how to organize and structure an app effectively. I’m excited to continue building on this foundation and improving my skills!
